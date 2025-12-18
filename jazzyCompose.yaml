@@ -1,0 +1,18 @@
+services:
+  ros:
+    image: ros2:jazzy_cuda
+    gpus: all
+    container_name: ros2_u24_cuda_dev
+    working_dir: /root/ros_ws
+    volumes:
+      - $HOME/data/u24_ws:/root/ros_ws # Remember to replace the host path to anywhere you need.
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY=${DISPLAY}
+      - XAUTHORITY=${XAUTHORITY}
+      - QT_X11_NO_MITSHM=1
+    # Keep an interactive terminal
+    stdin_open: true
+    tty: true
+    network_mode: host
+    command: bash
