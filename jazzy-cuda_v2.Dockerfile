@@ -126,6 +126,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends git-core bash-c
 ENV DEBIAN_FRONTEND=
 ENV AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS=1
 
+# Install Starship
+RUN curl -sS https://starship.rs/install.sh | sh -s -- -y
+
+# Enable Starship for bash (root user)
+RUN echo 'eval "$(starship init bash)"' >> /root/.bashrc
+
 ###########################################
 #  Full image
 ###########################################
